@@ -28,27 +28,18 @@ class InstructionsViewDelegate extends WatchUi.BehaviorDelegate {
         System.println("InstructionsViewDelegate - step : " + step);
 
         if (evt.getKey() == WatchUi.KEY_ENTER) {
-            updateStep(step + 1);
-            WatchUi.pushView(
-                new InstructionsView(step),
-                new InstructionsViewDelegate(step),
-                WatchUi.SLIDE_IMMEDIATE
-            );
-        } else if (evt.getKey() == WatchUi.KEY_ESC) {
+            updateStep(self.step == null ? 0 : self.step + 1);
 
-            if (step <= 0) {
-                WatchUi.pushView(
-                    new TennisPerfAnalysisView(),
-                    new TennisPerfAnalysisDelegate(),
-                    WatchUi.SLIDE_IMMEDIATE
-                );
+            WatchUi.pushView(new InstructionsView(self.step), new InstructionsViewDelegate(self.step),
+                             WatchUi.SLIDE_IMMEDIATE);
+        } else if (evt.getKey() == WatchUi.KEY_ESC) {
+            if (self.step == 0 || self.step == null) {
+                WatchUi.pushView(new TennisPerfAnalysisView(), new TennisPerfAnalysisDelegate(),
+                                 WatchUi.SLIDE_IMMEDIATE);
             } else {
                 updateStep(step - 1);
-            WatchUi.pushView(
-                new InstructionsView(step),
-                new InstructionsViewDelegate(step),
-                WatchUi.SLIDE_IMMEDIATE
-            );
+                WatchUi.pushView(new InstructionsView(self.step), new InstructionsViewDelegate(self.step),
+                                 WatchUi.SLIDE_IMMEDIATE);
             }
 
                     return true;
