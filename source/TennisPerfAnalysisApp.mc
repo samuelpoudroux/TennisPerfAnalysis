@@ -1,8 +1,8 @@
-import Toybox.Application;
-import Toybox.Lang;
-import Toybox.WatchUi;
-import Toybox.System;
+using Toybox.WatchUi;
+using Toybox.Graphics;
+using Toybox.Application;
 
+// Classe principale de l'application
 class TennisPerfAnalysisApp extends Application.AppBase {
     function initialize() {
         AppBase.initialize();
@@ -22,8 +22,4 @@ class TennisPerfAnalysisApp extends Application.AppBase {
         System.println("TennisPerfAnalysisApp, getInitialView");
         return [ new TennisPerfAnalysisView(), new TennisPerfAnalysisDelegate() ];
     }
-}
-
-function getApp() as TennisPerfAnalysisApp {
-    return Application.getApp() as TennisPerfAnalysisApp;
 }
