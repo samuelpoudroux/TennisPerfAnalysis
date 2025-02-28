@@ -46,7 +46,8 @@ class ScreenUtils {
     static function drawButton(dc, label, x, y, buttonWidth, buttonHeight, buttonColor, textColor, cornerRadius) {
         // Draw the button background
         dc.setColor(buttonColor, Graphics.COLOR_TRANSPARENT);
-        dc.fillRoundedRectangle(x - buttonWidth / 2, y - buttonHeight / 2, buttonWidth, buttonHeight, cornerRadius);
+        dc.fillRoundedRectangle(x - buttonWidth / 2, y - buttonHeight / 2, buttonWidth / 2, buttonHeight / 2,
+                                cornerRadius);
 
         // Draw the button text
         dc.setColor(textColor, buttonColor);

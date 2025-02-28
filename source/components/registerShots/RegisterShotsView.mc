@@ -35,8 +35,13 @@ class RegisterShotsView extends WatchUi.View {
         ScreenUtils.clearScreenDefault(dc, Graphics.COLOR_WHITE);
 
         // Puis dessiner le reste de votre interface
-        ScreenUtils.drawTitle(dc, "Register shot view", Graphics.FONT_MEDIUM, Graphics.COLOR_BLACK);
+        ScreenUtils.drawTextAt(dc, screenWidth / 2, screenHeight / 3 - 10, "Commence par enregistrer",
+                               Graphics.FONT_XTINY, Graphics.COLOR_BLACK, Graphics.TEXT_JUSTIFY_CENTER);
+        ScreenUtils.drawTextAt(dc, screenWidth / 2, screenHeight / 3 + 30, "tous tes bons coups", Graphics.FONT_XTINY,
+                               Graphics.COLOR_BLACK, Graphics.TEXT_JUSTIFY_CENTER);
 
+        ScreenUtils.drawButton(dc, "Commencer", screenWidth / 2, screenHeight / 3 + 150, 0, 0, Graphics.COLOR_BLACK,
+                               Graphics.COLOR_WHITE, 10);
         // Afficher la zone de texte
     }
 }
