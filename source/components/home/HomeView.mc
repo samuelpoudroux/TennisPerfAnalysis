@@ -42,7 +42,7 @@ class HomeView extends WatchUi.View {
         ScreenUtils.drawTextAt(dc, screenWidth / 2, screenHeight / 6, "Tennis perf analyse", Graphics.FONT_XTINY,
                                Graphics.COLOR_BLACK, Graphics.TEXT_JUSTIFY_CENTER);
 
-        ScreenUtils.drawButton(dc, "Commencer", screenWidth / 2, screenHeight - 100, 0, 0, Graphics.COLOR_BLACK,
+        ScreenUtils.drawButton(dc, "Commencer", screenWidth / 2, screenHeight - 110, 20, 20, Graphics.COLOR_BLACK,
                                Graphics.COLOR_WHITE, 10);
     }
 }

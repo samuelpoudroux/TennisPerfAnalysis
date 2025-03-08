@@ -4,7 +4,7 @@ using Toybox.Graphics;
 class RegisterForehandShotView extends WatchUi.View {
     var screenWidth;
     var screenHeight;
-    var homeLogo;
+    var foreHandAnimationImg;
     var animationManager;
 
     var forehandFrames = [
@@ -34,13 +34,12 @@ class RegisterForehandShotView extends WatchUi.View {
     function initialize() {
         View.initialize();
         animationManager = new AnimationManager(forehandFrames, 100, method( : onAnimationUpdate));
-        animationManager.start();
         // Utiliser une référence method plutôt qu'une référence à this.onAnimationUpdate
     }
     function onLayout(dc) {
         screenWidth = dc.getWidth();
         screenHeight = dc.getHeight();
-        homeLogo = WatchUi.loadResource(forehandFrames[0]);
+        foreHandAnimationImg = WatchUi.loadResource(forehandFrames[0]);
     }
 
     function onHide() {
@@ -48,26 +47,35 @@ class RegisterForehandShotView extends WatchUi.View {
     }
 
     function onAnimationUpdate(newFrame) {
-        System.println("Frame: " + newFrame);
         if (newFrame != null) {
-            homeLogo = WatchUi.loadResource(newFrame);
+            foreHandAnimationImg = WatchUi.loadResource(newFrame);
 
             WatchUi.requestUpdate();
         } else {
             System.println("Error: Invalid frame.");
         }
     }
+
+    function onShow() {
+        animationManager.start();
+    }
+
     function onUpdate(dc) {
         dc.clear();
         ScreenUtils.clearScreenDefault(dc, Graphics.COLOR_WHITE);
 
-        if (homeLogo != null) {
-            System.println("Drawing frame" + homeLogo);
-            var imgWidth = homeLogo.getWidth();
-            var imgHeight = homeLogo.getHeight();
+        if (foreHandAnimationImg != null) {
+            var imgWidth = foreHandAnimationImg.getWidth();
+            var imgHeight = foreHandAnimationImg.getHeight();
             var x = (screenWidth - imgWidth) / 2;
-            var y = (screenHeight - imgHeight) / 2;
-            dc.drawBitmap(x, y, homeLogo);
+            var y = (screenHeight - imgHeight) / 4;
+            dc.drawBitmap(x, y, foreHandAnimationImg);
         }
+
+        ScreenUtils.drawTextAt(dc, screenWidth / 2, screenHeight - 200, "Coup droit", Graphics.FONT_XTINY,
+                               Graphics.COLOR_BLACK, Graphics.TEXT_JUSTIFY_CENTER);
+
+        ScreenUtils.drawButton(dc, "Commencer l'analyse", screenWidth / 2, screenHeight - 100, 0, 0,
+                               Graphics.COLOR_BLACK, Graphics.COLOR_WHITE, 10);
     }
 }

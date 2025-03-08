@@ -33,7 +33,7 @@ class AnimationManager {
 
     function updateAnimation() {
         currentFrame = (currentFrame + 1) % frames.size();
-        System.println("Index du frame actuel : " + currentFrame);
+
 
         if (self.frames[currentFrame] != null) {
             self.onFrameUpdate.invoke(self.frames[currentFrame]);

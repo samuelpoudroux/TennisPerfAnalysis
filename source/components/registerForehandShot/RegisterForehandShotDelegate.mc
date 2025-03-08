@@ -20,4 +20,21 @@ class RegisterForehandShotDelegate extends WatchUi.BehaviorDelegate {
         registerShotMenuManager.showMenu();
         return true;
     }
+
+    function onKey(e) {
+        System.println("RegisterForehandShotDelegate + " + e.getKey());
+
+        if (e.getKey() == WatchUi.KEY_ENTER) {
+            WatchUi.pushView(new RegisterShotRunningView(), new RegisterShotRunningDelegate(new RegisterShotRunningView()), WatchUi.SLIDE_IMMEDIATE);
+            return true;
+        }
+        return false;
+    }
+
+    function onSelect() {
+        // Handle the touch event here
+        System.println("Button pressed!");
+        WatchUi.pushView(new RegisterShotRunningView(), new RegisterShotRunningDelegate(new RegisterShotRunningView()), WatchUi.SLIDE_IMMEDIATE);
+        return true;  // Indicate that the event has been handled
+    }
 }

@@ -51,7 +51,7 @@ class ScreenUtils {
 
         // Draw the button text
         dc.setColor(textColor, buttonColor);
-        dc.drawText(x, y, Graphics.FONT_TINY, label, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(x, y, Graphics.FONT_XTINY, label, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
     // Function to check if coordinate is within a rectangle (for touch handling)
